@@ -27,11 +27,37 @@
 
 継続的デプロイのビルトインでウェブアプリケーションの静的リソースをホストするように AWS Amplify を設定する。
 
-ソースコードを S3 から持ってくる。持ってきたらソースコードを github に push する。
+- ソースコードを S3 から持ってくる。持ってきたらソースコードを github に push する。
 
 ```sh
 aws s3 cp s3://wildrydes-us-east-1/WebApplication/1_StaticWebHosting/website ./website --recursive --profile myaws-cli \
   --profile YOUR-PROFILE
+```
+
+- AWS Amplify コンソールを使用してウェブホスティングを有効にする。
+
+<img src="./readme-image/AWS_Amplify_console.png" width="500px">
+
+- デプロイできました。めちゃ簡単です。
+
+<img src="./readme-image/AWS_Amplify_console_deploy.png" width="500px">
+
+- ソースコードの変更をデプロイしてみる。デプロイするには変更を github に push する。
+
+```diff
+diff --git a/website/index.html b/website/index.html
+index 45565dc..81dd5b5 100644
+--- a/website/index.html
++++ b/website/index.html
+@@ -4,7 +4,7 @@
+   <meta charset="utf-8">
+   <meta name="description" content="">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+-  <title>Wild Rydes</title>
++  <title>Wild Rydes - Rydes of the Future!</title>
+
+   <link rel="stylesheet" href="css/font.css">
+   <link rel="stylesheet" href="css/main.css">
 ```
 
 ## ユーザーを管理する（Amazon Cognito）
